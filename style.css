@@ -1,0 +1,410 @@
+/* ===== BASE ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Buda', serif;
+  font-weight: 300;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* Encadré qui remplace les images */
+.ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  
+  border: 1px solid #fff;
+  color: #d7d7d7;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+}
+/* Quand vous mettrez de vraies images : <img> avec .ph img {width:100%;height:100%;object-fit:cover} */
+.ph img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Un écran = 1440 x 900 sur le design */
+.ecran {
+  position: relative;
+  min-height: 900px;
+  padding: 84px 60px 40px;
+}
+
+/* Traits sous les titres */
+.trait-h { height: 1px; width: 110px; background: #fff; }
+.trait-centre { margin: 8px auto 0; width: 190px; }
+.trait-large { width: 485px; max-width: 80%; }
+.trait-v { width: 1px; height: 130px; background: #fff; }
+#trait-large {margin-left: 8px auto 0; width: 190px;}
+
+.titre-centre {
+  text-align: center;
+  font-size: 69px;
+  font-weight: 300;
+  padding-top: 60px;
+}
+
+
+/* ===== NAV (commune à tous les écrans) ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 84px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px 0 212px;
+}
+.nav-liste { display: flex; align-items: center; gap: 100px; }
+.nav-liste a { font-size: 24px; color: #fff; }
+.nav-liste a.actif { border-bottom: 1px solid #fff; padding-bottom: 2px; }
+.fleche { font-size: 14px; }
+.a-sous-menu { position: relative; }
+.sous-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: #000;
+  border: 1px solid #fff;
+  padding: 10px 0;
+}
+.sous-menu a { display: block; padding: 6px 16px; font-size: 20px; }
+.a-sous-menu:hover .sous-menu { display: block; }
+.ph-logo { width: 64px; height: 64px; padding: 2px; font-size: 8px; border: none; background: transparent; }
+
+
+/* ===== ÉCRAN 1 : ACCUEIL ===== */
+.accueil {
+  padding: 0;
+  margin-top: -136px;           /* l'image passe derrière la nav */
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.ph-fond {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: none;
+  opacity: .46;
+}
+.accueil h1 {
+  position: relative;
+  z-index: 1;
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 96px;
+  line-height: 1.2;
+  max-width: 1054px;
+  padding: 0 20px;
+  margin-top: -80px;
+}
+.ph-logo-grand {
+  position: absolute;
+  z-index: 1;
+  bottom: 83px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 199px;
+  height: 199px;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+
+/* ===== ÉCRAN 2 : CRÉATIONS ===== */
+.grille-cartes {
+  display: grid;
+  grid-template-columns: repeat(4, 284px);
+  justify-content: center;
+  gap: 40px;
+  margin-top: 120px;
+}
+.carte { position: relative; display: block; height: 379px; }
+.carte .ph { width: 100%; height: 100%; border: 3px solid #fff; }
+.carte img { opacity: .64; }
+.carte-titre {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 48px;
+  line-height: 1.15;
+  text-shadow: 0 0 8px rgba(0,0,0,.6);
+}
+.portecrea { object-position: 64% 91%; }
+
+
+/* ===== ÉCRAN 3 : À PROPOS ===== */
+.apropos {
+  display: grid;
+  grid-template-columns: 650px 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-left: 114px;
+  padding-right: 90px;
+}
+.apropos-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.apropos-photos .ph { height: 281px; border: 3px solid #fff; }
+.apropos-photos .ph.large { grid-column: 1 / -1; height: 281px; margin-top: 28px; }
+.apropos-texte h2 { font-size: 69px; font-weight: 300; text-align: center; }
+.apropos-texte .trait-h { width: 197px; margin: 8px auto 20px; }
+.apropos-texte p { font-size: 20px; line-height: 1.4; margin-bottom: 20px; }
+
+
+/* ===== ÉCRAN 4 : CONTACT & NEWSLETTER ===== */
+.contact-corps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 40px;
+  padding: 0 30px;
+}
+.coordonnees { font-style: normal; text-align: center; display: flex; flex-direction: column; gap: 24px; }
+.bloc-contact { display: flex; flex-direction: column; align-items: center; font-size: 36px; line-height: 1.1; }
+.bloc-contact a, .bloc-contact p { display: block; }
+.icone { width: 48px; height: 48px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 4px; }
+
+.contact-droite { display: flex; flex-direction: column; align-items: center; padding-top: 20px; }
+.bio { font-size: 20px; line-height: 1.4; text-align: justify; max-width: 419px; }
+
+.newsletter { margin-top: 24px; width: 338px; text-align: center; font-family: 'Inter', sans-serif; }
+.newsletter h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
+.sous-titre { font-size: 20px; color: #d7d7d7; margin: 8px 0 12px; }
+.newsletter input {
+  width: 100%;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  background: rgba(208,208,208,.15);
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+}
+.newsletter input::placeholder { color: rgba(255,255,255,.9); }
+.ligne-email { display: flex; gap: 12px; margin-top: 8px; }
+.ligne-email input { height: 40px; background: #fff; color: #000; font-size: 14px; }
+.ligne-email input::placeholder { color: #555; }
+.ligne-email button {
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+/* ===== PAGES CATÉGORIES (écrans 5 à 8) ===== */
+.categorie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding-top: 110px;
+}
+.galerie { display: grid; gap: 28px; }
+.galerie .ph { width: 100%; }
+
+/* Titre vertical (lu de bas en haut) + trait à droite */
+.titre-vertical { display: flex; align-items: center; gap: 12px; }
+.titre-vertical h2 {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 69px;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+
+/* ===== ÉCRAN 5 : MIROIRS (4 colonnes x 2) ===== */
+.cat-miroirs .galerie { grid-template-columns: repeat(4, 248px); gap: 42px 42px; }
+.cat-miroirs .ph { height: 331px; }
+.miroir8 { object-position: 50% 35%; }
+
+/* ===== ÉCRAN 6 : TABLES (3 colonnes x 2) ===== */
+.cat-tables .galerie { grid-template-columns: repeat(3, 341px); gap: 28px 46px; }
+.cat-tables .ph { height: 256px; }
+.table3 { object-position: 50% 100%; }
+.table4 { object-position: 50% 90%; }
+
+
+/* ===== ÉCRAN 7 : PORTES (titre à gauche, 2 colonnes x 2) ===== */
+.cat-portes { justify-content: space-around; padding: 110px 120px 40px; }
+.titre-horizontal h2 { font-size: 69px; font-weight: 300; }
+.titre-horizontal .trait-h { width: 104px; margin-top: 4px; margin-left: 16px; }
+.cat-portes .galerie { grid-template-columns: repeat(2, 256px); gap: 28px 150px; }
+.cat-portes .ph { height: 341px; }
+.porte4 { object-position: 50% 91%; }
+.porte1 { object-position: 64% 91%; }
+
+
+/* ===== ÉCRAN 8 : COFFRES & BUREAUX (3 colonnes x 2) ===== */
+.cat-bureaux .galerie { grid-template-columns: repeat(3, 241px); gap: 50px 140px; }
+.cat-bureaux .ph { height: 241px; }
+.coffre1 { object-position: 50% 67%; }
+.bureau1 { object-position: 50% 100%; }
+.bureau2 { object-position: 64% 91%; }
+.bureau3 { object-position: 64% 91%; }
+
+
+
+/* ===== RESPONSIVE (tablette / mobile) ===== */
+@media (max-width: 1100px) {
+  .nav { padding: 0 20px; }
+  .nav-liste { gap: 30px; }
+  .grille-cartes { grid-template-columns: repeat(2, 1fr); }
+  .apropos, .contact-corps { grid-template-columns: 1fr; }
+  .categorie { flex-direction: column; }
+  .titre-vertical h2 { writing-mode: horizontal-tb; transform: none; }
+  .titre-vertical { flex-direction: column; }
+  .trait-v { width: 110px; height: 1px; }
+  .cat-miroirs .galerie,
+  .cat-tables .galerie,
+  .cat-portes .galerie,
+  .cat-bureaux .galerie { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .accueil h1 { font-size: 48px; }
+}
+@media (max-width: 600px) {
+  .nav-liste { gap: 14px; }
+  .nav-liste a { font-size: 16px; }
+  .grille-cartes { grid-template-columns: 1fr; }
+  .titre-centre, .apropos-texte h2 { font-size: 40px; }
+  .bloc-contact { font-size: 24px; }
+}
+
+
+
+
+
+/* ===== ÉCRANS ADAPTÉS À LA FENÊTRE ===== */
+
+/* Chaque écran = au moins la hauteur de la fenêtre, contenu centré */
+.ecran {
+  min-height: 100vh;
+  padding: 84px 4vw 3vh;
+}
+.accueil { padding: 0; }
+
+/* --- Créations et Contact : tout centré verticalement --- */
+.creations,
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.titre-centre {
+  padding-top: 0;
+  font-size: clamp(40px, 5vw, 69px);
+}
+
+/* --- Créations : 4 cartes qui rétrécissent avec la fenêtre --- */
+.grille-cartes {
+  grid-template-columns: repeat(4, minmax(0, 284px));
+  gap: 2.5vw;
+  width: 100%;
+  max-width: 1256px;
+  margin: 6vh auto 0;
+}
+.carte { height: auto; aspect-ratio: 284 / 379; }
+.carte-titre { font-size: clamp(26px, 3.3vw, 48px); }
+
+/* --- À propos --- */
+.apropos {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 4vw;
+  align-content: center;
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+.apropos-photos .ph,
+.apropos-photos .ph.large { height: clamp(140px, 31vh, 281px); }
+.apropos-texte h2 { font-size: clamp(40px, 5vw, 69px); }
+.apropos-texte p { font-size: clamp(14px, 1.4vw, 20px); margin-bottom: 1.6vh; }
+
+/* --- Contact --- */
+.contact-corps { margin-top: 4vh; gap: 4vw; }
+.bloc-contact { font-size: clamp(20px, 2.5vw, 36px); }
+.bio { font-size: clamp(14px, 1.4vw, 20px); }
+
+/* --- Pages Miroirs, Tables, Portes, Coffres : centrées sous la nav --- */
+.categorie {
+  min-height: calc(100vh - 84px);
+  padding: 20px 4vw;
+  align-items: center;
+  justify-content: center;
+}
+.titre-vertical h2,
+.titre-horizontal h2 { font-size: clamp(40px, 5vw, 69px); }
+
+/* Chaque photo a une hauteur --h qui s'adapte à la hauteur de la fenêtre :
+   les 2 rangées tiennent toujours à l'écran */
+.galerie { --h: 300px; }
+
+.cat-miroirs .galerie {
+  --h: min(331px, calc((100vh - 84px - 110px) / 2));
+  grid-template-columns: repeat(4, calc(var(--h) * 248 / 331));
+  gap: 28px 3vw;
+}
+.cat-tables .galerie {
+  --h: min(256px, calc((100vh - 84px - 110px) / 2));
+  grid-template-columns: repeat(3, calc(var(--h) * 341 / 256));
+  gap: 28px 3vw;
+}
+.cat-portes .galerie {
+  --h: min(341px, calc((100vh - 84px - 110px) / 2));
+  grid-template-columns: repeat(2, calc(var(--h) * 256 / 341));
+  gap: 28px 8vw;
+}
+.cat-bureaux .galerie {
+  --h: min(241px, calc((100vh - 84px - 110px) / 2));
+  grid-template-columns: repeat(3, var(--h));
+  gap: 28px 6vw;
+}
+.cat-miroirs .ph,
+.cat-tables .ph,
+.cat-portes .ph,
+.cat-bureaux .ph { height: var(--h); }
+
+.cat-portes { gap: 6vw; padding: 20px 6vw; }
+
+/* --- Petits écrans (tablette / téléphone) --- */
+@media (max-width: 1100px) {
+  .grille-cartes { grid-template-columns: repeat(2, 1fr); }
+  .apropos, .contact-corps { grid-template-columns: 1fr; }
+  .categorie { flex-direction: column; }
+  .galerie { --h: auto; }
+  .cat-miroirs .galerie,
+  .cat-tables .galerie,
+  .cat-portes .galerie,
+  .cat-bureaux .galerie { grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; }
+  .cat-miroirs .ph  { height: auto; aspect-ratio: 248 / 331; }
+  .cat-tables .ph   { height: auto; aspect-ratio: 341 / 256; }
+  .cat-portes .ph   { height: auto; aspect-ratio: 256 / 341; }
+  .cat-bureaux .ph  { height: auto; aspect-ratio: 1 / 1; }
+}
+@media (max-width: 600px) {
+  .grille-cartes { grid-template-columns: 1fr; }
+}
