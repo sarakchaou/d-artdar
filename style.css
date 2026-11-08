@@ -626,3 +626,63 @@ ul { list-style: none; }
   body .ligne-email { flex-direction: column; }
   body .ligne-email button { width: 100%; }
 }
+
+
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+
+/* ---------- 1. NAV : léger zoom au survol ---------- */
+.nav-liste > li > a,
+.sous-menu a {
+  display: inline-block;          /* obligatoire pour que le zoom marche sur un lien */
+  transition: transform .25s ease, opacity .25s ease;
+}
+.ph-logo,
+.ph-logo-grand,
+.logo-lien { transition: transform .3s ease; }
+
+@media (hover: hover) {           /* survol : seulement sur ordinateur */
+  .nav-liste > li > a:hover,
+  .sous-menu a:hover { transform: scale(1.1); }
+  .logo-lien:hover .ph-logo,
+  .ph-logo:hover { transform: scale(1.08); }
+}
+
+/* ---------- 2. IMAGES : léger zoom au survol ---------- */
+.ph { overflow: hidden; }         /* l'image ne dépasse pas de son cadre */
+.ph img { transition: transform .6s ease, opacity .4s ease; }
+
+@media (hover: hover) {
+  .ph:hover img { transform: scale(1.06); }
+  .carte:hover .ph img { opacity: 1; }   /* sur Créations, la photo s'éclaircit */
+  .carte-titre { transition: transform .4s ease; }
+  .carte:hover .carte-titre { transform: translateY(-50%) scale(1.08); }
+}
+
+/* ---------- 3. PASSAGE D'UNE PAGE HTML À L'AUTRE ---------- */
+@keyframes fondu-entree {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fondu-sortie {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Navigateurs récents : vraie transition entre deux pages */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: .3s ease both fondu-sortie; }
+::view-transition-new(root) { animation: .5s ease both fondu-entree; }
+.nav { view-transition-name: nav; }      /* la barre reste fixe pendant la transition */
+
+/* Autres navigateurs : la page apparaît simplement en fondu */
+@supports not (view-transition-name: none) {
+  body { animation: fondu-entree .6s ease both; }
+}
+
+/* ---------- Respect des personnes qui désactivent les animations ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
