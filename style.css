@@ -275,28 +275,7 @@ ul { list-style: none; }
 
 
 /* ===== RESPONSIVE (tablette / mobile) ===== */
-@media (max-width: 1100px) {
-  .nav { padding: 0 20px; }
-  .nav-liste { gap: 30px; }
-  .grille-cartes { grid-template-columns: repeat(2, 1fr); }
-  .apropos, .contact-corps { grid-template-columns: 1fr; }
-  .categorie { flex-direction: column; }
-  .titre-vertical h2 { writing-mode: horizontal-tb; transform: none; }
-  .titre-vertical { flex-direction: column; }
-  .trait-v { width: 110px; height: 1px; }
-  .cat-miroirs .galerie,
-  .cat-tables .galerie,
-  .cat-portes .galerie,
-  .cat-bureaux .galerie { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .accueil h1 { font-size: 48px; }
-}
-@media (max-width: 600px) {
-  .nav-liste { gap: 14px; }
-  .nav-liste a { font-size: 16px; }
-  .grille-cartes { grid-template-columns: 1fr; }
-  .titre-centre, .apropos-texte h2 { font-size: 40px; }
-  .bloc-contact { font-size: 24px; }
-}
+
 
 
 
@@ -400,7 +379,7 @@ ul { list-style: none; }
    VERSION TÉLÉPHONE (maquette Figma mobile : 392 px de large)
    Ne s'applique qu'en dessous de 480 px. Le bureau ne change pas.
    ================================================================ */
-@media (max-width: 480px) {
+@media (max-width: 900px) {
 
   body {
     --nav: 76px;
@@ -419,9 +398,7 @@ ul { list-style: none; }
   body .nav { height: var(--nav); padding: 0 4vw 0 5vw; gap: 3vw; }
   body .nav-liste { flex: 1; gap: 0; justify-content: space-between; }
   body .nav-liste a { font-size: clamp(11px, 3.57vw, 16px); }
-  /* Ordre de la maquette mobile : Accueil, Créations, Newsletter, A propos */
-  body .nav-liste li:nth-child(3) { order: 4; }
-  body .nav-liste li:nth-child(4) { order: 3; }
+
   body .ph-logo { width: clamp(36px, 11.7vw, 56px); height: clamp(36px, 11.7vw, 56px); flex: none; }
   body .sous-menu { min-width: 160px; }
   .a-sous-menu:focus-within .sous-menu { display: block; }
@@ -458,7 +435,7 @@ ul { list-style: none; }
     max-width: 560px;
     margin: 26vw auto 0;
   }
-  body .carte { height: auto; }
+body .carte { height: auto; aspect-ratio: 1 / 1; }
   body .carte .ph { width: 100%; height: auto; aspect-ratio: 1 / 1; }
   body .carte-titre { font-size: clamp(17px, 8.2vw, 36px); }
   /* Ordre maquette : Miroirs | Portes, puis Tables | Coffres & Bureaux */
@@ -689,3 +666,4 @@ ul { list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
