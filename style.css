@@ -85,7 +85,7 @@ ul { list-style: none; }
 /* ===== ÉCRAN 1 : ACCUEIL ===== */
 .accueil {
   padding: 0;
-  margin-top: -136px;           /* l'image passe derrière la nav */
+  margin-top: -84px;           /* l'image passe derrière la nav */
   min-height: 800px;
   display: flex;
   flex-direction: column;
