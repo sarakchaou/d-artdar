@@ -233,7 +233,7 @@ ul { list-style: none; }
 
 /* Titre vertical (lu de bas en haut) + trait à droite */
 .titre-vertical { display: flex; align-items: center; gap: 12px; }
-.titre-vertical h2 {
+.titre-vertical h1 {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-size: 69px;
@@ -256,7 +256,7 @@ ul { list-style: none; }
 
 /* ===== ÉCRAN 7 : PORTES (titre à gauche, 2 colonnes x 2) ===== */
 .cat-portes { justify-content: space-around; padding: 110px 120px 40px; }
-.titre-horizontal h2 { font-size: 69px; font-weight: 300; }
+.titre-horizontal h1 { font-size: 69px; font-weight: 300; }
 .titre-horizontal .trait-h { width: 104px; margin-top: 4px; margin-left: 16px; }
 .cat-portes .galerie { grid-template-columns: repeat(2, 256px); gap: 28px 150px; }
 .cat-portes .ph { height: 341px; }
@@ -338,8 +338,8 @@ ul { list-style: none; }
   align-items: center;
   justify-content: center;
 }
-.titre-vertical h2,
-.titre-horizontal h2 { font-size: clamp(40px, 5vw, 69px); }
+.titre-vertical h1,
+.titre-horizontal h1 { font-size: clamp(40px, 5vw, 69px); }
 
 /* Chaque photo a une hauteur --h qui s'adapte à la hauteur de la fenêtre :
    les 2 rangées tiennent toujours à l'écran */
@@ -506,7 +506,7 @@ body .carte { height: auto; aspect-ratio: 1 / 1; }
     padding: 3vw 5.4vw 6vw 4.4vw;
   }
   body .cat-miroirs .titre-vertical { flex: none; flex-direction: row; gap: 1.5vw; }
-  body .cat-miroirs .titre-vertical h2 {
+  body .cat-miroirs .titre-vertical h1 {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     font-size: var(--titre);
@@ -538,7 +538,7 @@ body .carte { height: auto; aspect-ratio: 1 / 1; }
     padding: 12vw 8.2vw 8vw;
   }
   body .cat-tables .titre-vertical { flex-direction: column; align-items: center; gap: 2vw; }
-  body .cat-tables .titre-vertical h2 {
+  body .cat-tables .titre-vertical h1 {
     writing-mode: horizontal-tb;
     transform: none;
     font-size: var(--titre);
@@ -566,7 +566,7 @@ body .carte { height: auto; aspect-ratio: 1 / 1; }
   }
   body .cat-portes .galerie { display: contents; }
   body .cat-portes .titre-horizontal { grid-column: 1; grid-row: 1; text-align: center; }
-  body .cat-portes .titre-horizontal h2 { font-size: var(--titre); }
+  body .cat-portes .titre-horizontal h1 { font-size: var(--titre); }
   body .cat-portes .titre-horizontal .trait-h { width: 18.6vw; margin: 3vw auto 0; }
   body .cat-portes .ph { width: 100%; height: auto; aspect-ratio: 154 / 205; }
   body .cat-portes .ph:nth-child(1) { grid-column: 2; grid-row: 1; }
@@ -583,7 +583,7 @@ body .carte { height: auto; aspect-ratio: 1 / 1; }
     padding: 8vw 4vw;
   }
   body .cat-bureaux .titre-vertical { flex-direction: column; align-items: center; gap: 2vw; }
-  body .cat-bureaux .titre-vertical h2 {
+  body .cat-bureaux .titre-vertical h1 {
     writing-mode: horizontal-tb;
     transform: none;
     font-size: clamp(22px, 11.4vw, 50px);
