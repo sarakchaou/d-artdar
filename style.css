@@ -667,3 +667,43 @@ body .carte { height: auto; aspect-ratio: 1 / 1; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
+
+.ph-fond img { transition: none !important;}
+.ph-fond:hover img { transform: none !important; }
+
+/* ---------- POP-UP DE CONFIRMATION DE L'INSCRIPTION ---------- */
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, .7);
+  animation: apparition-popup .3s ease both;
+}
+.popup[hidden] { display: none; }
+.popup-boite {
+  width: min(90vw, 420px);
+  padding: 32px 28px;
+  text-align: center;
+  background: #000;
+  border: 1px solid #fff;
+  border-radius: 12px;
+}
+.popup-boite h3 { font-size: clamp(26px, 6vw, 36px); font-weight: 300; margin-bottom: 12px; }
+.popup-boite p { font-size: clamp(15px, 4vw, 20px); line-height: 1.4; margin-bottom: 24px; }
+.popup-boite button {
+  height: 40px;
+  padding: 0 24px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  background: transparent;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease;
+}
+.popup-boite button:hover { background: #fff; color: #000; }
+@keyframes apparition-popup { from { opacity: 0; } to { opacity: 1; } }

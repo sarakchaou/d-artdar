@@ -149,21 +149,57 @@
     <div class="contact-droite">
       <p class="bio">Je suis Myriam Ksouri, docteure en sciences du langage, enseignante-chercheuse et fondatrice de D'Art Dar.<br><br>Depuis toujours, je suis animée par une même conviction : transmettre, créer et préserver le patrimoine. Si mon parcours professionnel est consacré à la recherche et à l'enseignement, ma passion pour l'art, la restauration et l'artisanat m'a conduite à donner naissance à D'Art Dar, un atelier où chaque création est le fruit d'un dialogue entre mémoire, matière et savoir-faire.</p>
 
-      <form class="newsletter" action="#" method="post">
+     <form class="newsletter" id="form-newsletter" action="#" method="post">
+      
         <h3>Ne manquez rien</h3>
         <p class="sous-titre">Inscrivez-vous à notre Newsletter</p>
         <input type="text" name="nom" placeholder="Nom et Prénom" aria-label="Nom et prénom">
         <div class="ligne-email">
-          <input type="email" name="email" placeholder="nomprénom@exemple.com" aria-label="Adresse e-mail">
+          
+          <input type="email" name="email" placeholder="nomprénom@exemple.com" aria-label="Adresse e-mail" required>
           <button type="submit">Envoyer</button>
         </div>
       </form>
     </div>
   </div>
 </section>
+
+<!-- ============ ÉCRAN 4 : pop-up merci pour votre inscription ============ -->
+
+<div class="popup" id="popup-newsletter" role="dialog" aria-modal="true" aria-labelledby="popup-titre" hidden>
+  <div class="popup-boite">
+    <h3 id="popup-titre">Merci !</h3>
+    <p id="popup-texte">Votre inscription à la newsletter a bien été prise en compte.</p>
+    <button type="button" id="popup-fermer">Fermer</button>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('form-newsletter');
+  const popup = document.getElementById('popup-newsletter');
+  const texte = document.getElementById('popup-texte');
+  const fermer = document.getElementById('popup-fermer');
+
+  function ouvrir(email) {
+    texte.textContent = 'Votre inscription à la newsletter a bien été prise en compte (' + email + ').';
+    popup.hidden = false;
+    fermer.focus();
+  }
+  function fermerPopup() { popup.hidden = true; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();                          // empêche le rechargement de la page
+    const email = form.email.value.trim();
+    if (!email) return;                          // rien si l'e-mail est vide
+    ouvrir(email);
+    form.reset();                                // vide les champs
+  });
+
+  fermer.addEventListener('click', fermerPopup);
+  popup.addEventListener('click', function (e) { if (e.target === popup) fermerPopup(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermerPopup(); });
+</script>
 <!-- ============ ÉCRAN 4 : FIN ============ -->
-
-
 </body>
 </html>
 
