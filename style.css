@@ -403,6 +403,8 @@ ul { list-style: none; }
   body .sous-menu { min-width: 160px; }
   .a-sous-menu:focus-within .sous-menu { display: block; }
 
+  
+
   /* ---------- ÉCRAN 1 : ACCUEIL ---------- */
   body .accueil {
     margin-top: calc(var(--nav) * -1);
@@ -707,3 +709,10 @@ body .carte { height: auto; aspect-ratio: 1 / 1; }
 }
 .popup-boite button:hover { background: #fff; color: #000; }
 @keyframes apparition-popup { from { opacity: 0; } to { opacity: 1; } }
+
+
+/* Logo dans la nav : image entière, sans être rognée */
+.logo-lien { display: block; flex: none; }
+.ph-logo img { object-fit: contain; }
+#logopetit{width: 100px;
+    height: fit-content;;}
